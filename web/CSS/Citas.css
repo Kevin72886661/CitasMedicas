@@ -1,0 +1,95 @@
+#contenedor_citas_form {
+    background: #E4E3DE;
+    padding: 15px;
+    border-radius: 3px;
+    margin: 10px 0 25px;
+    padding-top: 22px;
+}
+
+#documentNumber {
+    display: inline-block;
+    
+}
+
+.contenedor_citas{
+        width: 900px;
+	margin: 20px auto;
+	overflow: hidden;
+        background: #fff;
+        border-radius: 15px;
+        padding: 20px 25px;
+        
+}
+
+.columns{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+}
+        
+.text-areapresc{
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        resize: none;
+    }
+    .buttonmodpres{
+        width: 140px;
+        background: #137ff3;
+        color: #fff;
+        padding: 10px;
+        border-color: transparent;
+        font-weight: 700;
+        border-radius: 8px;
+
+   }
+.contenedor_edit{
+    width: 800px;
+	margin: 20px auto;
+	
+        border-radius: 15px;
+        padding: 20px 25px;
+}
+.centrar{
+       width: 400px;
+       margin: 10px auto;
+}
+
+#form_buscar{
+    padding: 10px 0px;
+}
+/*
+input[type="text"]{
+    border:2px solid #cecece;
+	border-radius: 5px;
+	padding: 10px 10px;
+	font-size: 10px;
+	color:#a4a4a4;
+        
+}
+*/
+.titulocita{
+    font-size: 28px;
+    color: #905b2b;
+    font-family: Conv_Stag-Book;
+    display: block;
+}
+.texto1{
+    font-size: 15px;
+    display: inline-block;
+}
+.green{
+    color: #00b14c;
+    font-weight: 700;
+}
+
+.botoncita:hover {
+    background: #825b31;
+    color: #ffffff;
+    border: 1px solid #825b31;
+}
+

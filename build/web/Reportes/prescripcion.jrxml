@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9b3d5fec-ca56-48df-8148-34ba3e648c11">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idPresc" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT p.idPrescripcion,p.Receta,p.Recomendacion,p.Fecha,u.DNI,u.nombre,u.apellidopat,u.apellidomat,
+m.Nombre AS 'NOMMEDICO',m.apepat AS 'APEPATMED',m.apemat AS 'APEMATMED',m.Telefono,e.NomEspecilidad
+from prescripcion p
+INNER JOIN usuario u
+ON(u.id_usuario=p.idPaciente)
+INNER JOIN medico m
+ON(m.id_medico=p.idMedico)
+INNER JOIN especialidad e
+ON(e.idespecialidad=m.idespecialidad)
+WHERE p.idPrescripcion=$P{idPresc};]]>
+	</queryString>
+	<field name="idPrescripcion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Receta" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Recomendacion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Fecha" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DNI" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidopat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellidomat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMMEDICO" class="java.lang.String"/>
+	<field name="APEPATMED" class="java.lang.String"/>
+	<field name="APEMATMED" class="java.lang.String"/>
+	<field name="Telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NomEspecilidad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="143" y="3" width="289" height="30" forecolor="#137FF3" uuid="645d0715-08f5-4141-a9d3-715737bf0098"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE PRESCRIPCION MEDICA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="120" splitType="Stretch">
+			<staticText>
+				<reportElement x="443" y="7" width="100" height="20" uuid="63de32d8-7d93-4242-8dde-e0b636194ace"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="443" y="27" width="100" height="20" uuid="865d7fd0-1ba4-426f-9c73-037502bd3bc0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Fecha}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="214" y="0" width="125" height="120" uuid="eb24eb73-50d2-4ff4-b054-24d7dbd617af"/>
+				<imageExpression><![CDATA["C:\\Users\\JorgeCHIRINOS\\Desktop\\Proyecto_Integrador\\web\\imagenes\\descarga.png"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="225" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="9" y="56" width="225" height="159" forecolor="#0000FF" uuid="a7b6af07-6e47-4871-abbf-2373bf7640a9"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="22" y="122" width="75" height="20" uuid="ad41f690-f536-4043-9406-342947f6843d"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="93" width="78" height="20" uuid="1adfef30-d7b9-42b6-9291-ca6cc208684c"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[DNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="152" width="87" height="20" uuid="cfba9b5d-fb3f-49fa-b2ae-5f6d39a99c0f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Apellido Paterno]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="136" y="93" width="78" height="20" uuid="0aae2053-9abe-4b8e-bf2b-8e1a9a8355a1"/>
+				<textFieldExpression><![CDATA[$F{DNI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="122" width="75" height="20" uuid="3698b169-62ba-4f62-82a0-29b476913e22"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="152" width="87" height="20" uuid="a00a6339-baca-4fa2-aa50-018938ed8181"/>
+				<textFieldExpression><![CDATA[$F{apellidopat}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="50" y="60" width="156" height="20" uuid="a59e5da3-9443-4104-b807-9289a85716a3"/>
+				<textElement>
+					<font fontName="Cambria" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATOS DEL PACIENTE]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="303" y="56" width="212" height="159" forecolor="#0000FF" uuid="abc3da09-5b99-4aba-8d61-c64e35ffab2f"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="364" y="60" width="100" height="20" uuid="5bbc489d-a188-46f5-98d3-afbe9687f6ca"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MEDICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="317" y="99" width="78" height="20" uuid="fe0c0718-688b-4afe-9c2f-cbd06ad81b32"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="443" y="99" width="57" height="20" uuid="a333db29-b207-49e3-95b1-d00b86c097dd"/>
+				<textFieldExpression><![CDATA[$F{NOMMEDICO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="184" width="87" height="20" uuid="183077cb-e039-4bf9-af34-ec7cae905af4"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Apellido Materno]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="136" y="184" width="87" height="20" uuid="5b26515c-f0a9-492d-aeb4-3606759d5ea2"/>
+				<textFieldExpression><![CDATA[$F{apellidomat}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="317" y="142" width="93" height="20" uuid="60e32c3a-5acf-45a5-9c46-1189a78da362"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Apellido Paterno ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="12" width="237" height="30" forecolor="#000000" uuid="61c1c6b0-bf45-43fc-8156-c573e5be0481"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRESCRIPCION MEDICA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="143" y="42" width="265" height="1" forecolor="#137FF3" uuid="969bf3dd-b185-4100-96a5-5825d6cb198d"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="317" y="184" width="100" height="20" uuid="aad036e1-402f-41de-86cd-01a82065c7bb"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Telefono]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="443" y="184" width="57" height="20" uuid="61517b60-fea1-4201-80cd-e88461b95b47"/>
+				<textFieldExpression><![CDATA[$F{Telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="443" y="142" width="57" height="20" uuid="0cd15f4f-e771-40c9-be11-03dbeabe1b83"/>
+				<textFieldExpression><![CDATA[$F{APEPATMED}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="175" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="129" y="114" width="285" height="43" forecolor="#137FF3" backcolor="#EBF3FA" uuid="0b67176a-ca7e-4e81-af86-eeda93f00349"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="129" y="60" width="285" height="43" forecolor="#137FF3" backcolor="#EBF3FA" uuid="06ed51c8-4cbd-4ce5-a71c-37b0c708b8db"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="299" y="70" width="100" height="20" uuid="019c6d73-00ec-46d4-8b69-24ece187154f"/>
+				<textFieldExpression><![CDATA[$F{Receta}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="147" y="70" width="100" height="20" uuid="4e92d0b2-4d7a-4ccb-9333-c3e7a77dfc9f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Receta]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="299" y="126" width="100" height="20" uuid="8a152467-d903-44e4-b951-48b78451f3f6"/>
+				<textFieldExpression><![CDATA[$F{Recomendacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="147" y="126" width="100" height="20" uuid="88c3b102-7e1a-4651-94f4-e7e270dd904b"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Recomendacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="12" width="198" height="31" forecolor="#137FF3" uuid="d7aac583-cfc0-4f23-a732-079366f11132"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECETA MEDICA N°]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="353" y="12" width="41" height="31" forecolor="#137FF3" uuid="1c2b2357-6a45-438f-94a1-ebc5de86ee40"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idPrescripcion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

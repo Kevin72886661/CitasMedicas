@@ -1,0 +1,75 @@
+.container-medico {
+    width: 70%;
+    display: table;
+    margin: auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f1f1;
+    background: #137ff3;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.imagen-medico img{
+    margin: 10px 10px;
+    width: 120px;
+    height: 150px;
+}
+.container-medico > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+.nombre_medico {
+    font-family: Conv_Gotham-Book;
+    font-size: 19px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 25px;
+    margin-top: 40px;
+    padding-left: 20px;
+}
+
+.horario{
+    font-family: Conv_Gotham-Book;
+    font-size: 10px;
+    color: #fff;
+    font-size: 15px;
+    padding-left: 20px;
+}
+
+.detalles1{
+    
+    color:#fff;
+}
+
+.detalles2{
+    font-weight: normal;
+    color:#5DFFFA;
+}
+.botonreserva{
+    margin-top: 20px;
+    margin-left: 15px;
+    float: left;
+}
+.contenedor-det{
+    padding-left: 20px;
+    margin-top: 10px;
+    
+}
+
+
+.contenedor-det .detalles2 a{
+    text-decoration: none;
+    color: #fff;
+    padding: 15px;
+    float: left;
+}
+
+
+.opciones{
+    display: block;
+    padding-top: 10px;
+}
+
+.combohorarios{
+    padding: 10px;
+}
