@@ -12,7 +12,7 @@
 }
 
 .contenedor_citas{
-        width: 900px;
+    max-width: 1100px;
 	margin: 20px auto;
 	overflow: hidden;
         background: #fff;

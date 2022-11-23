@@ -12,8 +12,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import pe.citas.BD.Interfaces.InterfaceEspecialidad;
 import pe.citas.BD.Interfaces.InterfaceUsuario;
+import pe.citas.BD.Mysql.MysqlEspecialidad;
 import pe.citas.BD.Mysql.MysqlUsuario;
+import pe.citas.modelo.vo.Especialidad;
 import pe.citas.modelo.vo.Usuario;
 
 /**
@@ -50,7 +53,17 @@ public class Registro extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
+                String accion = request.getParameter("accion");
                 
+
+
+                if (accion == null){
+                        accion="";
+                }
+                
+                if(accion.equalsIgnoreCase("registrarespec") ){
+                    this.insertarEspec(request,response);
+                }
         }
 
     /**
@@ -126,5 +139,28 @@ public class Registro extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void insertarEspec(HttpServletRequest request, HttpServletResponse response) {
+                    InterfaceEspecialidad DAO_especialidad=new MysqlEspecialidad();
+
+
+                    Especialidad espec= new Especialidad();
+
+                    espec.setNomEspecialidad(request.getParameter("nombreespec"));
+
+                    try {
+                        int valor =DAO_especialidad.insertar(espec);
+                        if(valor>=1){
+                            request.setAttribute("mensaje", "<p style='color:green;font-size:18px'>La especialidad se registro con exito</p>");
+                        request.getRequestDispatcher("Citas-Adm/RegEspecialidad.jsp").forward(request, response);
+                        }else{
+                            request.setAttribute("mensaje", "<p style='color:red;font-size:18px'>No se pudo registrar la especialidad</p>");
+                            request.getRequestDispatcher("Citas-Adm/RegEspecialidad.jsp").forward(request, response);
+                        }
+
+                    } catch (Exception ex) {
+                        System.out.println("Error:"+ex.getMessage());
+                    }
+    }
 
 }

@@ -3,9 +3,12 @@ package pe.citas.BD.Mysql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import pe.citas.BD.Interfaces.InterfaceHorario;
+import pe.citas.modelo.vo.Especialidad;
 import pe.citas.modelo.vo.Horario;
+import pe.citas.modelo.vo.Medico;
 
 public class MysqlHorario implements InterfaceHorario{
     String OBTENER="SELECT  * FROM HORARIO";
@@ -14,6 +17,8 @@ public class MysqlHorario implements InterfaceHorario{
     
     String INSERTAR="INSERT INTO HORARIO VALUES (null,?,?,?)";
     
+    String listar = "select h.idHorario, m.id_medico, m.Nombre,m.apepat,e.NomEspecilidad, h.Dia, h.Hora FROM horario h INNER JOIN medico m on(h.idMedico= m.id_medico) INNER JOIN especialidad e on(m.idespecialidad=e.idespecialidad)";
+
     private Connection conexion;
     private PreparedStatement ps;
     private ResultSet resultado;
@@ -122,5 +127,63 @@ public class MysqlHorario implements InterfaceHorario{
         } catch (Exception e) {
         }
         
+    }
+
+    @Override
+    public ArrayList<Horario> listar2() {
+        ArrayList<Horario> listaHorario=new ArrayList<>();
+        try {
+           
+            conexion=new MysqlConexion().getConnection();
+            ps=conexion.prepareStatement(listar);
+                      
+            ResultSet rs=ps.executeQuery();
+            
+            while (rs.next()) {       
+//               
+            Horario  horario=new Horario();
+            Medico m=new Medico();
+            Especialidad e=new Especialidad();
+               
+                horario.setIdHorario(rs.getInt(1));
+                m.setId(rs.getInt(2));
+                m.setNombre(rs.getString(3));
+                m.setApellidopat(rs.getString(4));
+                horario.setMedico(m);
+                       
+                e.setNomEspecialidad(rs.getString(5));
+                horario.setEspecialidad(e);
+                         
+                horario.setDia(rs.getString(6));
+                horario.setHora(rs.getString(7));
+
+//                cita.setIdCita(rs.getInt(1));
+//                cita.setIdMedico(rs.getInt(2));
+//                cita.setIdEspecialidad(rs.getInt(3));
+//                cita.setIdUsuario(rs.getInt(4));
+//                cita.setDia(rs.getString(5));
+//                cita.setHora(rs.getString(6));
+//               cita.setDiaCrearCita(rs.getDate(7));
+//                
+                listaHorario.add(horario);
+            }
+            rs.close();
+            CerrarConexiones();
+        } catch (Exception e) {
+            System.out.println("No se pudo validar las credenciales en la base de datos.Mensaje: " + e.getMessage() );
+        }
+            return listaHorario;
+    }
+
+    @Override
+    public void eliminar(Integer idhorario) {
+        try {
+            conexion=new MysqlConexion().getConnection();
+            ps=conexion.prepareStatement("DELETE FROM horario WHERE idHorario ="+idhorario);
+            ps.executeUpdate();
+            
+            } catch (SQLException ex) {
+            }
+            CerrarConexiones();
     }
 }

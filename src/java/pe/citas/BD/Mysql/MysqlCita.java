@@ -22,7 +22,8 @@ public class MysqlCita implements InterfaceCita{
     
 String SELECCIONARPORIDMEDICO = "SELECT c.idCita,m.id_medico,m.Nombre,e.NomEspecilidad,u.id_usuario,u.nombre, u.apellidopat,u.apellidomat,c.Dia, c.Hora, c.DiaCrearCita FROM cita c INNER JOIN especialidad e ON(e.idespecialidad=c.id_especialidad) INNER JOIN medico m ON(m.id_medico=c.id_medico) INNER JOIN usuario u ON(u.id_usuario=c.id_usuario) where c.id_medico=?";
 //    String SELECCIONARPORIDMEDICO ="SELECT idCita, id_medico, id_especialidad, id_usuario, dia, hora, DiaCrearCita from Cita where id_medico=?";
-    String SELECCIONAR = "SELECT * FROM Cita";   
+String listar = "SELECT c.idCita,m.id_medico,m.Nombre,m.apepat,e.NomEspecilidad,u.id_usuario,u.DNI,u.nombre, u.apellidopat,u.apellidomat,c.Dia, c.Hora, c.DiaCrearCita FROM cita c INNER JOIN especialidad e ON(e.idespecialidad=c.id_especialidad) INNER JOIN medico m ON(m.id_medico=c.id_medico) INNER JOIN usuario u ON(u.id_usuario=c.id_usuario)";
+
     
     
     
@@ -103,26 +104,55 @@ String SELECCIONARPORIDMEDICO = "SELECT c.idCita,m.id_medico,m.Nombre,e.NomEspec
     public ArrayList<Cita> listar() {
         ArrayList<Cita> listaCita=new ArrayList<>();
         try {
+           
             conexion=new MysqlConexion().getConnection();
-            ps=conexion.prepareStatement(SELECCIONAR);
-            resultado=ps.executeQuery();
+            ps=conexion.prepareStatement(listar);
+                      
+            ResultSet rs=ps.executeQuery();
             
-                while (resultado.next()) {
-                    Cita objCita=new Cita();
-                    
-                    objCita.setIdCita(resultado.getInt(1));
-                    objCita.setIdMedico(resultado.getInt(2));
-                    objCita.setIdUsuario(resultado.getInt(3));
-                    objCita.setDia(resultado.getString(4));
-                    objCita.setHora(resultado.getString(5));
-                    objCita.setDiaCrearCita(resultado.getDate(6));
-                    
-                    listaCita.add(objCita);
-                }
-            } catch (SQLException ex) {
+            while (rs.next()) {       
+//               
+            Cita  cita=new Cita();
+            Medico m=new Medico();
+            Usuario u =new Usuario();
+            Especialidad e=new Especialidad();
+               
+                cita.setIdCita(rs.getInt(1));
+                m.setId(rs.getInt(2));
+                m.setNombre(rs.getString(3));
+                m.setApellidopat(rs.getString(4));
+                cita.setMedico(m);
+                       
+                e.setNomEspecialidad(rs.getString(5));
+                cita.setEspecialidad(e);
+                         
+                u.setId(rs.getInt(6));
+                u.setDNI(rs.getString(7));
+                u.setNombre(rs.getString(8));
+                u.setApellidopat(rs.getString(9));
+                u.setApellidomat(rs.getString(10));
+                cita.setUsuario(u);
+         
+                
+                cita.setDia(rs.getString(11));
+                cita.setHora(rs.getString(12));
+               cita.setDiaCrearCita(rs.getDate(13));
+
+//                cita.setIdCita(rs.getInt(1));
+//                cita.setIdMedico(rs.getInt(2));
+//                cita.setIdEspecialidad(rs.getInt(3));
+//                cita.setIdUsuario(rs.getInt(4));
+//                cita.setDia(rs.getString(5));
+//                cita.setHora(rs.getString(6));
+//               cita.setDiaCrearCita(rs.getDate(7));
+//                
+                listaCita.add(cita);
             }
+            rs.close();
             CerrarConexiones();
-            
+        } catch (Exception e) {
+            System.out.println("No se pudo validar las credenciales en la base de datos.Mensaje: " + e.getMessage() );
+        }
             return listaCita;
         }
     

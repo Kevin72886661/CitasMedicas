@@ -200,37 +200,37 @@ public class SCita extends HttpServlet {
                     ArrayList<Usuario> listausu=(ArrayList<Usuario>)sesion.getAttribute("listaUsuarios"); 
                     
                     int id;
-                    for (Cita objcita : listacita) {
-                        id=objcita.getIdMedico();
-                        int idusuario=objcita.getIdUsuario();
-                       
-                         for (Medico objmedico : listamedico) {
-                            for (Especialidad especialidad : listaespec) { 
-                             int idespeci=especialidad.getIdespecialidad();
-
-                                for (Usuario usuario : listausu) {
-                                    if (objmedico.getId()==id ) {
-                                    objcita.setMedico(objmedico);
-                                    break;
-                                    
-                                    }
-                                    if (usuario.getId()==idusuario) {
-                                    objcita.setUsuario(usuario); 
-                                    break;
-                                    }
-                                    if (objmedico.getPerfil_especialidad()==idespeci) {
-                                        objcita.setEspecialidad(especialidad);
-                                        break;
-                                    }
-//                                    if (especialidad.getIdespecialidad()==idespeci) {
-//                                    objcita.setEspecialidad(especialidad); 
+//                    for (Cita objcita : listacita) {
+//                        id=objcita.getIdMedico();
+//                        int idusuario=objcita.getIdUsuario();
+//                       
+//                         for (Medico objmedico : listamedico) {
+//                            for (Especialidad especialidad : listaespec) { 
+//                             int idespeci=especialidad.getIdespecialidad();
+//
+//                                for (Usuario usuario : listausu) {
+//                                    if (objmedico.getId()==id ) {
+//                                    objcita.setMedico(objmedico);
+//                                    break;
+//                                    
+//                                    }
+//                                    if (usuario.getId()==idusuario) {
+//                                    objcita.setUsuario(usuario); 
 //                                    break;
 //                                    }
-                                }
-                                
-                            }
-                       }
-                    }
+//                                    if (objmedico.getPerfil_especialidad()==idespeci) {
+//                                        objcita.setEspecialidad(especialidad);
+//                                        break;
+//                                    }
+////                                    if (especialidad.getIdespecialidad()==idespeci) {
+////                                    objcita.setEspecialidad(especialidad); 
+////                                    break;
+////                                    }
+//                                }
+//                                
+//                            }
+//                       }
+//                    }
                     
                     sesion.setAttribute("listaPacientes", listacita);
 

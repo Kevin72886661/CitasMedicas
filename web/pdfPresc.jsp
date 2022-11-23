@@ -22,13 +22,13 @@
     </head>
     <body>
          <%
-        File reportfile = new File (application.getRealPath("/Reportes/prescripcion.jasper"));
+        File reportfile = new File (application.getRealPath("/Reportes2/prescripcion.jasper"));
         
         Map<String,Object> parameter = new HashMap<String,Object>();
         
         int valor=Integer.parseInt(request.getParameter("idPres")); 
         
-        parameter.put("idPresc", new Integer(valor));
+        parameter.put("idPrescripcion", new Integer(valor));
         
         MysqlConexion DaoConexion=new MysqlConexion();
         

@@ -73,7 +73,7 @@ try{
                      <div class="col-sm-10">
                         <center>
                            <label>Seleccionar Fecha: </label>
-                           <input type="text" name="txtfecha" id="txtfecha"/>
+                           <input type="text" name="txtfecha" autocomplete="false" id="txtfecha"/>
                         </center>
                      </div>
                  </div>   

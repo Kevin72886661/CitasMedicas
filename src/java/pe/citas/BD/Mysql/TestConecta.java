@@ -3,7 +3,9 @@ package pe.citas.BD.Mysql;
 import java.sql.Connection;
 import java.sql.Date;
 import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
 import pe.citas.BD.Interfaces.InterfaceCita;
+import pe.citas.BD.Interfaces.InterfaceEspecialidad;
 import pe.citas.BD.Interfaces.InterfaceHistoria;
 import pe.citas.BD.Interfaces.InterfaceHorario;
 import pe.citas.BD.Interfaces.InterfaceMedico;
@@ -23,23 +25,12 @@ public class TestConecta {
 
     public static void main(String[] args) {
         MysqlConexion conecta = new MysqlConexion();
-        InterfaceCita DaoCita=new MysqlCita();
+        InterfaceEspecialidad DaoEsp=new MysqlEspecialidad();
         
         Connection conn = conecta.getConnection();
          
         Cita cita=new Cita();
-        
-        
-        
-        cita.setIdMedico(2);
-        
-        cita.setIdEspecialidad(3);
-        
-        cita.setIdUsuario(2);
-        
-        cita.setDia("5/10/2022");
-        
-        cita.setHora("17:35");
+    
         
 //        for (Cita listaCita : listaCitas) {
 //            int idcita=listaCita.getIdCita();
@@ -49,8 +40,21 @@ public class TestConecta {
 //            }
 //        }
         
-        DaoCita.insertar(cita);
+        //DaoEsp.insertar(cita);
         
+//        InterfaceCita DaoCita=new MysqlCita();
+                    
+//                    ArrayList<Especialidad> listaespec = DaoEsp.listar();
+//                    for (Especialidad espec : listaespec) {
+//                        System.out.println("citas "+espec.getNomEspecialidad());
+//        }
+              InterfaceHorario daoHorario=new MysqlHorario();
+              ArrayList<Horario> hora=daoHorario.listar2();
+              
+              for (Horario h : hora) {
+            System.out.println(""+h.getMedico().getNombre());
+        }
+              
         
 //        InterfaceHistoria DaoHistoria=new MysqlHistoria();
 //        

@@ -10,11 +10,33 @@
 <%@page import="pe.citas.BD.Interfaces.InterfaceHistoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    InterfaceHistoria DaoHistoria=null;
+    /*InterfaceHistoria DaoHistoria=null;
     
     DaoHistoria=new MysqlHistoria();
     
-    HistoriaC h=DaoHistoria.obtenerporId(Integer.parseInt(request.getParameter("id")));
+    HistoriaC h=DaoHistoria.obtenerporId(Integer.parseInt(request.getParameter("id")));*/
+    
+    InterfaceHistoria DaoHistoria=null;
+    
+    DaoHistoria=new MysqlHistoria();
+    HistoriaC h=null;
+    String estado_modificar="false";
+    String valor="";
+    
+    try {
+           valor=request.getParameter("update").toString();
+    } catch (Exception e) {
+        e.getMessage();
+    }        
+    if(valor.equalsIgnoreCase("true") && estado_modificar.equalsIgnoreCase("false")){
+            h=DaoHistoria.obtenerporId(Integer.parseInt(request.getParameter("id")));
+
+    }else{
+            h=DaoHistoria.obtenerporId(Integer.parseInt(request.getAttribute("id_hist").toString()));
+            estado_modificar=request.getAttribute("estado_modificar").toString();
+
+    }
+    
     
 %>
 <!DOCTYPE html>
@@ -36,9 +58,7 @@
                    <input type="hidden" name="accion" value="Modificar">
 
                     <table class="table">
-                        <tr>
-                           <td><input type="hidden" class="form-control" name="txtCodigo" value="<%= h.getIdHistoria()%>" readonly></td>
-                       </tr>
+                        
                          <div class="row">
                            <td>Antecedentes familiares: </td>
                            <td><input type="text" class="form-control" name="antecedentes" value="<%= h.getAntecedentes()%>">
@@ -62,12 +82,13 @@
                        </tr>
                     
                        
-                       <tr>
-                           <th colspan="2"><button class="btn btn-primary" type="submit" name="accion" value="ModificarHistoria" />Modificar Historia</th>
-                       </tr>
+                      
                        
                    </table> 
-                          
+                                                  <input type="hidden" name="txtCodigo" value="<%= h.getIdHistoria()%>" readonly>
+
+                     <div><button class="buttonmodpres" type="submit" name="accion" value="Modificar">Modificar Prescripcion</button></div>  
+  
                 </form>
                             </div> 
         </div>        

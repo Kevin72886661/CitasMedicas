@@ -52,6 +52,8 @@ public class Prescripcion extends HttpServlet {
             this.listarAdm(request,response);
         }if (accion.equals("Modificar")) {
                 this.Modificar(request,response);
+        }if (accion.equals("pageModificar")) {
+                this.PageModificar(request,response);
         }
     }
 
@@ -191,15 +193,31 @@ public class Prescripcion extends HttpServlet {
 //                }
                 
                         if(rpta){
-                            request.setAttribute("men", "<p style='color:green;font-size:18px'>La prescripcion medica se registro con exito</p>");
+                            request.setAttribute("men", "<p style='color:green;font-size:18px'>La prescripcion medica se actualizo con exito</p>");
                             request.setAttribute("id_presc", idprescripcion);
+                            request.setAttribute("estado_modificar", "true");
                             request.getRequestDispatcher("ModificarPrescripcion.jsp").forward(request, response);
                         }else{
-                            request.setAttribute("men", "<p style='color:red;font-size:18px'>No se pudo registrar la prescripcion medica</p>");
+                            request.setAttribute("men", "<p style='color:red;font-size:18px'>No se pudo actualizar la prescripcion medica</p>");
                             request.getRequestDispatcher("ModificarPrescripcion.jsp").forward(request, response);
                         }  
                 
                       
+    }
+
+    private void PageModificar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        InterfacePrescripcion DaoPrescripcion=new MysqlPrescripcion();
+        Prescripcion_C pr=null;
+        String valor=request.getParameter("update");
+        pr=DaoPrescripcion.obtenerporId(Integer.parseInt(request.getParameter("id")));
+
+        
+            request.setAttribute("presc", pr);
+            request.getRequestDispatcher("ModificarPrescripcion.jsp").forward(request, response);
+
+        
+
+        
     }
     
 

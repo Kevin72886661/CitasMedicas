@@ -47,7 +47,7 @@
                                 <td><c:out value="${historia.enfermedad}"/></td>
                                 <td><c:out value="${historia.fechCreHist}"/></td>
                                 <td><label class="detalles2"><a class="boton" href="../DetHistoria.jsp?id=<c:out value="${historia.idHistoria}"/>">Ver detalles</a></label></td>
-                                <td><label><a class="boton" href="ModificarHistoria.jsp?id=<c:out value="${historia.idHistoria}"/>">Modificar</a></label></td>
+                                <td><label><a class="boton" href="ModificarHistoria.jsp?id=<c:out value="${historia.idHistoria}"/>&update=true">Modificar</a></label></td>
 
                             </tr>
                         </c:when>

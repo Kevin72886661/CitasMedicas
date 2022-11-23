@@ -41,6 +41,10 @@ public class Horarios extends HttpServlet {
             this.consultar(request,response);
         }else if (accion.equals("insertar")) {
             this.insertar(request,response);
+        }else if(accion.equals("listar")){
+            this.listar(request,response);
+        }else if(accion.equals("eliminar")){
+            this.eliminar(request,response);
         }
     }
 
@@ -190,6 +194,43 @@ public class Horarios extends HttpServlet {
                 System.out.println("Error:"+ex.getMessage());
             }
         
+    }
+
+    private void listar(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession sesion=request.getSession();
+        
+        InterfaceHorario DaoHorario=new MysqlHorario();
+        
+        ArrayList<Horario> listaHorario=DaoHorario.listar2();
+        
+        sesion.setAttribute("listaHorario", listaHorario);
+        
+        response.sendRedirect("Citas-Adm/listarHorarios.jsp");
+    }
+
+    private void eliminar(HttpServletRequest request, HttpServletResponse response) throws IOException {
+                    HttpSession sesion=request.getSession();
+                    
+                    if(request.getParameter("idHorario")!=null){
+                        int idHorario=Integer.parseInt(request.getParameter("idHorario"));
+
+                        try {
+                            InterfaceHorario DaoHorario=new MysqlHorario();
+                            DaoHorario.eliminar(idHorario);
+                            ArrayList<Horario> listaHorario = DaoHorario.listar2();
+                            sesion.setAttribute("listaHorario", listaHorario);
+                            response.sendRedirect("Citas-Adm/listarHorarios.jsp");         
+
+
+                        } catch (Exception e) {
+                        }
+
+                        
+                        
+                    }
+                    
+
+
     }
 
 }

@@ -51,25 +51,29 @@ a.boton:active {
                         <th scope="col">DNI</th>
                         <th scope="col">Paciente</th>
                         <th scope="col">Medico</th>
+                        <th scope="col">Especialidad</th>
+
                         <th scope="col">Fecha de la cita</th>
                         <th scope="col">Hora de la cita</th>
-                        <th scope="col">Fecha de creacion</th>
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
                 
             <tbody>
-                <c:forEach items="${listaPacientes}" var="cita">
+        
+                            <c:forEach items="${listaPacientes}" var="cita">
                     <c:choose>
                         <c:when test="${not empty cita.idCita}">
                             <tr>
-                                <td><c:out value="${cita.usuario.DNI}"/></td>
-                                <td><c:out value="${cita.usuario.nombre}"/>&nbsp;<c:out value="${cita.usuario.apellidopat}"/></td>
-                                <td><c:out value="${cita.medico.nombre}"/>&nbsp;<c:out value="${cita.medico.apellidopat}"/>&nbsp;<c:out value="${cita.medico.apellidomat}"/></td>
+                              <td><c:out value="${cita.usuario.DNI}"/></td>
+
+                                <td><c:out value="${cita.usuario.nombre}"/>&nbsp;<c:out value="${cita.usuario.apellidopat}"/>&nbsp;<c:out value="${cita.usuario.apellidomat}"/></td>
+                                <td><c:out value="${cita.medico.nombre}"/>&nbsp;<c:out value="${cita.medico.apellidopat}"/></td>
+
+                                <td><c:out value="${cita.especialidad.nomEspecialidad}"/></td>
                                 <td><c:out value="${cita.dia}"/></td>
                                 <td><c:out value="${cita.hora}"/></td>
-                                <td><c:out value="${cita.diaCrearCita}"/></td>
-                                <td><label class="detalles2"><a class="boton" href="../Cita?idcita=${cita.idCita}&accion=eliminar">Eliminar</a></label></td>
+                                <td><label class="detalles2"><a class="boton" href="ServletControlador?accion=eliminar & id=<c:out value="${cita.idCita}"/>">Cancelar</a></label></td>
                             </tr>
                         </c:when>
                     </c:choose>

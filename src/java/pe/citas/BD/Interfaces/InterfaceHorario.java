@@ -6,4 +6,6 @@ import pe.citas.modelo.vo.Medico;
 
 public interface InterfaceHorario extends InterfaceGeneral<Integer, Horario>{
     public ArrayList<Horario> valiHorario(int Horario);
+    public ArrayList<Horario> listar2();
+    public void eliminar(Integer idhorario);
 }

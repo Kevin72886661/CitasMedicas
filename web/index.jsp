@@ -27,7 +27,7 @@ if(sesionOK.getAttribute("perfil")!=null)
     <body>
             
             <header>
-                <img src="imagenes/logo2.png" class="logo" alt="logo">     
+                <img src="imagenes/logo2.png" class="logo" alt="logo">    
             </header>
     
             
@@ -39,7 +39,7 @@ if(sesionOK.getAttribute("perfil")!=null)
                         <input type="text" name="usuario" placeholder="Usuario" class="form-control"/>
                         <br>
                         <label for="Clave" class="control-label col-xs-4">Contraseña: </label>
-                        <input type="password" name="clave" placeholder="Contraseña" class="form-control"/>
+                        <input type="password" name="clave" placeholder="Contraseña" class="form-control" maxlength="8"/>
 
                         <br>
                         <%

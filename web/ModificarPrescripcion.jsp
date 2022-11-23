@@ -14,12 +14,20 @@
     
     DaoPrescripcion=new MysqlPrescripcion();
     Prescripcion_C pr=null;
-    String valor=request.getParameter("update").toString();
-    if(pr!=null || valor=="true"){
+    String estado_modificar="false";
+    String valor="";
+    
+    try {
+           valor=request.getParameter("update").toString();
+    } catch (Exception e) {
+        e.getMessage();
+    }        
+    if(valor.equalsIgnoreCase("true") && estado_modificar.equalsIgnoreCase("false")){
             pr=DaoPrescripcion.obtenerporId(Integer.parseInt(request.getParameter("id")));
 
     }else{
             pr=DaoPrescripcion.obtenerporId(Integer.parseInt(request.getAttribute("id_presc").toString()));
+            estado_modificar=request.getAttribute("estado_modificar").toString();
 
     }
     

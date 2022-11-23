@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class MysqlConexion {
     
-    String url="jdbc:mysql://localhost:3306/bdcitas";
+    String url="jdbc:mysql://localhost:3306/bdcitas?useUnicode=true&characterEncoding=UTF-8";
     String user="root";
     String contra="";
     

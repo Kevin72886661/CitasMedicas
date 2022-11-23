@@ -67,10 +67,16 @@
                            <td>Especialidad: </td>
                            <td><select name="especialidad" id="especialidad" class="form-control" required="true">
                                         <option value="0">Seleccionar</option>
-                                        <option value="4">Cardiologia</option>
-                                        <option value="2">Dermatología</option>
-                                        <option value="3">Gastroenterología</option>
-                                        <option value="1">Nutrición</option>
+                                        <option value="1">Odontologia General</option>
+                                        <option value="2">Cirugía oral y maxilofacial</option>
+                                        <option value="3">Endodoncia</option>
+                                        <option value="4">Odontología estética</option>
+                                        <option value="5">Odontopediatría</option>
+                                        <option value="6">Ortodoncia</option>
+                                        <option value="7">Patología bucal</option>
+                                        <option value="8">Periodoncia</option>
+                                        <option value="9">Prostodoncia y rehabilitación oral</option>
+                                        <option value="10">Radiología oral y maxilofacial</option>
                             </select>
                            </td>   
                        </tr>

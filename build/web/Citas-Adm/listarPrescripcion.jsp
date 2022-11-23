@@ -46,7 +46,7 @@
                                 <td><c:out value="${pres.fecha}"/></td>
                                 <td><label class="detalles2"><a class="boton" href="../DetPrescripcion.jsp?id=<c:out value="${pres.idPrescripcion}"/>">Ver detalles</a></label></td>
 
-                                <td><label><a class="boton" href="../ModificarPrescripcion.jsp?id=<c:out value="${pres.idPrescripcion}"/>&update=<c:out value="true"/>">Modificar</a></label></td>
+                                <td><label><a class="boton" href="../ModificarPrescripcion.jsp?id=<c:out value="${pres.idPrescripcion}"/>&update=true">Modificar</a></label></td>
 
                             </tr>
                         </c:when>

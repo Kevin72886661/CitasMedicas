@@ -77,10 +77,6 @@ WHERE p.idPrescripcion=$P{idPresc};]]>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{Fecha}]]></textFieldExpression>
 			</textField>
-			<image>
-				<reportElement x="214" y="0" width="125" height="120" uuid="eb24eb73-50d2-4ff4-b054-24d7dbd617af"/>
-				<imageExpression><![CDATA["C:\\Users\\JorgeCHIRINOS\\Desktop\\Proyecto_Integrador\\web\\imagenes\\descarga.png"]]></imageExpression>
-			</image>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -221,13 +217,6 @@ WHERE p.idPrescripcion=$P{idPresc};]]>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Recomendacion]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="155" y="12" width="198" height="31" forecolor="#137FF3" uuid="d7aac583-cfc0-4f23-a732-079366f11132"/>
-				<textElement>
-					<font size="20" isBold="true"/>
-				</textElement>
-				<text><![CDATA[RECETA MEDICA N°]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="353" y="12" width="41" height="31" forecolor="#137FF3" uuid="1c2b2357-6a45-438f-94a1-ebc5de86ee40"/>
 				<textElement>
@@ -235,6 +224,13 @@ WHERE p.idPrescripcion=$P{idPresc};]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{idPrescripcion}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="155" y="12" width="198" height="31" forecolor="#137FF3" uuid="d7aac583-cfc0-4f23-a732-079366f11132"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECETA MEDICA N°]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>

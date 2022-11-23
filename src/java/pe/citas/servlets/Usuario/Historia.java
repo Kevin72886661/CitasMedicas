@@ -56,25 +56,7 @@ public class Historia extends HttpServlet {
             this.detalles(request, response);
         } 
         if (accion.equals("Modificar")) {
-            HistoriaC h=new HistoriaC(Integer.parseInt(request.getParameter("txtCodigo")),
-                         request.getParameter("antecedentes"),
-                     request.getParameter("motivo"),       
-                request.getParameter("enfermedad"),
-                request.getParameter("examenes")
-                    );
-
-                InterfaceHistoria
-                DaoHistoria=new MysqlHistoria();
-        
-                boolean rpta=DaoHistoria.actualizarHistoria(h);
-
-                if (rpta==true) {
-                    try {
-                        response.sendRedirect("mensaje.jsp?men=Se actualizo la historia de manera correcta");
-                    } catch (IOException ex) {
-                    response.sendRedirect("mensaje.jsp?men=No se actualizo la historia");
-                    }
-                }
+            this.Modificar(request, response);
         }
     }
 
@@ -206,8 +188,34 @@ public class Historia extends HttpServlet {
                 response.sendRedirect("../DetHistoria.jsp");
     }
 
-    private void Modificar(HttpServletRequest request, HttpServletResponse response) throws IOException {
-                
+    private void Modificar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+                HistoriaC h=new HistoriaC(Integer.parseInt(request.getParameter("txtCodigo")),
+                         request.getParameter("antecedentes"),
+                     request.getParameter("motivo"),       
+                request.getParameter("enfermedad"),
+                request.getParameter("examenes")
+                    );
+
+                InterfaceHistoria
+                DaoHistoria=new MysqlHistoria();
+                int idhistoria=Integer.parseInt(request.getParameter("txtCodigo"));
+
+                boolean rpta=DaoHistoria.actualizarHistoria(h);
+
+                if (rpta==true) {
+                    try {
+                        
+                            request.setAttribute("men", "<p style='color:green;font-size:18px'>La historia medica se registro con exito</p>");
+                            request.setAttribute("id_hist", idhistoria);
+                            request.setAttribute("estado_modificar", "true");
+                            request.getRequestDispatcher("Citas-Adm/ModificarHistoria.jsp").forward(request, response);
+                    } catch (IOException ex) {
+                        response.sendRedirect("mensaje.jsp?men=No se actualizo la historia");
+                    }
+                }else{
+                    request.setAttribute("men", "<p style='color:red;font-size:18px'>No se pudo actualizar la historia medica</p>");
+                            request.getRequestDispatcher("Citas-Adm/ModificarHistoria.jsp").forward(request, response);
+                }
     }
 
 }

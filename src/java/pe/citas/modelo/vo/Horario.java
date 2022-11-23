@@ -5,6 +5,8 @@ public class Horario {
     private String Dia; 
     private String Hora;
     private int idMedico;
+    private Medico medico;
+    private Especialidad especialidad;
 
     public Horario(int idHorario, String Dia) {
         this.idHorario = idHorario;
@@ -16,6 +18,15 @@ public class Horario {
         this.Dia = Dia;
         this.Hora = Hora;
         this.idMedico = idMedico;
+    }
+
+    public Horario(int idHorario, String Dia, String Hora, int idMedico, Medico medico, Especialidad especialidad) {
+        this.idHorario = idHorario;
+        this.Dia = Dia;
+        this.Hora = Hora;
+        this.idMedico = idMedico;
+        this.medico = medico;
+        this.especialidad = especialidad;
     }
 
     
@@ -52,6 +63,22 @@ public class Horario {
 
     public void setIdMedico(int idMedico) {
         this.idMedico = idMedico;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    public Especialidad getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(Especialidad especialidad) {
+        this.especialidad = especialidad;
     }
 
     

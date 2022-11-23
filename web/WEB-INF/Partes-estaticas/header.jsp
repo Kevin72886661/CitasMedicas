@@ -56,11 +56,21 @@ if(sesionOK.getAttribute("perfil")!=null){
                                     </ul>
                                     </li>
                                     
+                                    <li><a href="#">Especialidad</a>
+                                    
+                                    <ul class="submenu">
+                                        <li><a href="../Citas-Adm/RegEspecialidad.jsp">Registrar Especialidad</a></li>
+                                        <li><a href="../ServletHistorialAdmin?accion=listarespec">Lista de especialidades</a></li>
+                                    </ul>
+                                    </li>
+                                    
                                     <li><a href="#">Citas</a>
                                     
                                     <ul class="submenu">
                                         <li><a href="../RegCita.jsp">Agregar citas</a></li>
-                                        <li><a href="../Cita?accion=listar">Historial de citas</a></li>
+                                        <li><a href="../ServletHistorialAdmin?accion=listarcitas">Historial de citas</a></li>
+                                                                                <li><a href="../Horarios?accion=listar">Horarios</a></li>
+
                                     </ul>
                                     </li>
                                     
